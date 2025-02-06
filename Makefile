@@ -1,54 +1,27 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/23 19:52:51 by malves-b          #+#    #+#              #
-#    Updated: 2025/02/06 13:20:57 by malves-b         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ---------------------------------------------------------------------------- #
+#                                   MAKEFILE                                   #
+# ---------------------------------------------------------------------------- #
 
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/21 13:44:52 by malves-b          #+#    #+#              #
-#    Updated: 2024/10/10 17:02:37 by malves-b         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRC_DIRS := $(wildcard srcs/*)
 
-TARGET = cpp00
+SRC_FILES := $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/ex.cpp))
 
-FILES = $(wildcard srcs/*.cpp)
+TARGETS := $(SRC_FILES:srcs/%/ex.cpp=srcs/%/ex)
 
-OBJS = $(patsubst srcs/%.cpp, objs/%.o, $(FILES))
-
-CC = c++
+CC = g++ -g
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
-all: create_objs $(TARGET)
+all: $(TARGETS)
 
-create_objs:
-	@mkdir -p objs
-
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
-
-objs/%.o: srcs/%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+srcs/%/ex: srcs/%/ex.cpp
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(TARGETS)  # Remove apenas os executáveis, não as pastas
 
 fclean: clean
-	$(RM) $(TARGET)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
