@@ -1,26 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cpp00.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 19:55:46 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/10 19:48:07 by malves-b         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
 #include <string>
 
-class Cachorro{
+using namespace std;
+
+class Dog{
 	public:
-		Cachorro() : name(""), damage(5){}
+		Dog() : name(""), race(""), age(1), damage(5) {}
+
 		int	cast_spell()
 		{
 			return damage;
 		}
-		std::string name;
+
+		void sleep()
+		{
+			cout << "\nzzZZzz\n\n";
+		}
+
+		void photo()
+		{
+			cout <<	"    / \\__\n";
+			cout << "   (    @\\_____\n";
+			cout << "   /         O\n";
+			cout << "  /   (_____/\n";
+			cout << " /_____/   U\n\n";
+		}
+
+		void bark()
+		{
+			cout << "Au au Au\n";
+		}
+		string name;
+		string race;
+		int age;
 	private:
 		int damage;
 };
