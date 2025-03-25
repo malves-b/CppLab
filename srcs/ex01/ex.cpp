@@ -1,12 +1,13 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
 int main(void)
 {
 	int days;
-	cout << "Number of days: ";
+	cout << setw(5) << "Number of days: ";
 
 	cin >> days; //read a value to the variable
 
