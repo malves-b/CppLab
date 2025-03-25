@@ -5,7 +5,6 @@ using namespace std;
 
 class Dog{
 	public:
-	//Atributos
 		Dog() : name(""), race(""), age(1), damage(5) {}
 
 		int	cast_spell()
@@ -17,7 +16,6 @@ class Dog{
 		{
 			cout << "\nzzZZzz\n\n";
 		}
-	//Métodos
 		void photo()
 		{
 			cout <<	"    / \\__\n";
